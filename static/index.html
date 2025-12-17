@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Segregador de Imágenes</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="background-blur"></div>
+    
+    <div class="app-container">
+        <header>
+            <h1>Segregador Pro</h1>
+            <div class="info-bar">
+                <span id="directory-label">Cargando directorio...</span>
+                <span id="progress-label">0 / 0</span>
+            </div>
+        </header>
+
+        <main class="image-stage">
+            <div class="image-wrapper" id="image-wrapper">
+                <div class="spinner" id="spinner"></div>
+                <img id="current-image" src="" alt="Imagen a clasificar" class="hidden">
+                <div class="empty-state hidden" id="empty-state">
+                    <h2>¡Todo listo!</h2>
+                    <p>No quedan más imágenes en esta carpeta.</p>
+                </div>
+            </div>
+        </main>
+
+        <div class="controls">
+            <button id="btn-no" class="btn btn-no">
+                <span class="icon">✕</span>
+                <span class="label">NO</span>
+                <span class="shortcut">(Flecha Izq)</span>
+            </button>
+            <button id="btn-si" class="btn btn-si">
+                <span class="icon">✓</span>
+                <span class="label">SI</span>
+                <span class="shortcut">(Flecha Der)</span>
+            </button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

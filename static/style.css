@@ -1,0 +1,218 @@
+:root {
+    --bg-color: #0f172a;
+    --text-color: #f1f5f9;
+    --glass-bg: rgba(255, 255, 255, 0.05);
+    --glass-border: rgba(255, 255, 255, 0.1);
+    --primary-si: #10b981;
+    --primary-no: #ef4444;
+    --font-main: 'Outfit', sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-main);
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.background-blur {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%);
+}
+
+.app-container {
+    width: 100%;
+    max-width: 1200px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    gap: 1.5rem;
+}
+
+/* Header */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+}
+
+header h1 {
+    font-weight: 700;
+    font-size: 1.5rem;
+    background: linear-gradient(90deg, #38bdf8, #818cf8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.info-bar {
+    display: flex;
+    gap: 2rem;
+    font-size: 0.9rem;
+    color: #94a3b8;
+}
+
+/* Main Image Stage */
+.image-stage {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    min-height: 0; /* Important for flex child with overflow */
+}
+
+.image-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 24px;
+    border: 1px solid var(--glass-border);
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+}
+
+img#current-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.hidden {
+    display: none !important;
+}
+
+/* Controls */
+.controls {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    padding-bottom: 1rem;
+}
+
+.btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 180px;
+    height: 100px;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    color: var(--text-color);
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    font-family: var(--font-main);
+}
+
+.btn .icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.btn .label {
+    font-weight: 700;
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+}
+
+.btn .shortcut {
+    font-size: 0.75rem;
+    opacity: 0.5;
+    margin-top: 0.25rem;
+}
+
+.btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+.btn-no:hover {
+    background: var(--primary-no);
+    border-color: var(--primary-no);
+}
+
+.btn-si:hover {
+    background: var(--primary-si);
+    border-color: var(--primary-si);
+}
+
+/* Spinner */
+.spinner {
+    border: 4px solid var(--glass-border);
+    border-top: 4px solid #38bdf8;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    position: absolute;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Empty State */
+.empty-state {
+    text-align: center;
+}
+.empty-state h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+.empty-state p {
+    color: #94a3b8;
+}
+
+/* Animations */
+.animate-right {
+    animation: flyOutRight 0.5s forwards;
+}
+.animate-left {
+    animation: flyOutLeft 0.5s forwards;
+}
+
+@keyframes flyOutRight {
+    from { transform: translateX(0) rotate(0); opacity: 1; }
+    to { transform: translateX(100%) rotate(20deg); opacity: 0; }
+}
+
+@keyframes flyOutLeft {
+    from { transform: translateX(0) rotate(0); opacity: 1; }
+    to { transform: translateX(-100%) rotate(-20deg); opacity: 0; }
+}
