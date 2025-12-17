@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,9 +10,10 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;500;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <div class="background-blur"></div>
-    
+
     <div class="app-container">
         <header>
             <h1>Segregador Pro</h1>
@@ -38,6 +40,13 @@
                 <span class="label">NO</span>
                 <span class="shortcut">(Flecha Izq)</span>
             </button>
+
+            <button id="btn-undo" class="btn btn-undo" title="Deshacer último movimiento">
+                <span class="icon">↺</span>
+                <span class="label">VOLVER</span>
+                <span class="shortcut">(Flecha Abajo)</span>
+            </button>
+
             <button id="btn-si" class="btn btn-si">
                 <span class="icon">✓</span>
                 <span class="label">SI</span>
@@ -48,4 +57,5 @@
 
     <script src="app.js"></script>
 </body>
+
 </html>

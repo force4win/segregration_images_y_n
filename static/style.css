@@ -63,6 +63,7 @@ header h1 {
     font-size: 1.5rem;
     background: linear-gradient(90deg, #38bdf8, #818cf8);
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
@@ -80,7 +81,8 @@ header h1 {
     justify-content: center;
     align-items: center;
     position: relative;
-    min-height: 0; /* Important for flex child with overflow */
+    min-height: 0;
+    /* Important for flex child with overflow */
 }
 
 .image-wrapper {
@@ -171,6 +173,29 @@ img#current-image {
     border-color: var(--primary-si);
 }
 
+.btn-undo {
+    width: 100px;
+    /* Smaller than main buttons */
+    border-radius: 50%;
+    /* Circular or pill shaped */
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.btn-undo:hover {
+    background: #f59e0b;
+    border-color: #f59e0b;
+}
+
+.btn-undo .icon {
+    font-size: 1.5rem;
+    margin-bottom: 0;
+}
+
+.btn-undo .label {
+    font-size: 0.8rem;
+    margin-top: 0.2rem;
+}
+
 /* Spinner */
 .spinner {
     border: 4px solid var(--glass-border);
@@ -183,18 +208,25 @@ img#current-image {
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /* Empty State */
 .empty-state {
     text-align: center;
 }
+
 .empty-state h2 {
     font-size: 2rem;
     margin-bottom: 1rem;
 }
+
 .empty-state p {
     color: #94a3b8;
 }
@@ -203,16 +235,31 @@ img#current-image {
 .animate-right {
     animation: flyOutRight 0.5s forwards;
 }
+
 .animate-left {
     animation: flyOutLeft 0.5s forwards;
 }
 
 @keyframes flyOutRight {
-    from { transform: translateX(0) rotate(0); opacity: 1; }
-    to { transform: translateX(100%) rotate(20deg); opacity: 0; }
+    from {
+        transform: translateX(0) rotate(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(100%) rotate(20deg);
+        opacity: 0;
+    }
 }
 
 @keyframes flyOutLeft {
-    from { transform: translateX(0) rotate(0); opacity: 1; }
-    to { transform: translateX(-100%) rotate(-20deg); opacity: 0; }
+    from {
+        transform: translateX(0) rotate(0);
+        opacity: 1;
+    }
+
+    to {
+        transform: translateX(-100%) rotate(-20deg);
+        opacity: 0;
+    }
 }

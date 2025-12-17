@@ -106,6 +106,33 @@ def move_image(req: MoveRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
+class UndoRequest(BaseModel):
+    filename: str
+    previous_decision: str # "SI" or "NO"
+
+@app.post("/api/undo")
+def undo_move(req: UndoRequest):
+    if req.previous_decision not in ["SI", "NO"]:
+        raise HTTPException(status_code=400, detail="Invalid previous decision.")
+
+    # Current location (in SI or NO folder)
+    current_path = TARGET_DIRECTORY / req.previous_decision / req.filename
+    
+    # Target location (Back to root)
+    dest_path = TARGET_DIRECTORY / req.filename
+
+    if not current_path.exists():
+         raise HTTPException(status_code=404, detail="File not found in category folder.")
+
+    if dest_path.exists():
+        raise HTTPException(status_code=409, detail="File already exists in root directory.")
+
+    try:
+        shutil.move(str(current_path), str(dest_path))
+        return {"status": "success", "restored_to": str(dest_path)}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
 # Mount static files for Frontend
 # We assume 'static' folder is in the same dir as main.py
 current_dir = Path(__file__).parent.resolve()
